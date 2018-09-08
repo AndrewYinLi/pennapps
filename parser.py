@@ -36,7 +36,7 @@ outJSON["recipes"] = []
 def hasNumbers(inputString):
 	return bool(re.search(r'\d', inputString))
 
-def replaceFractions(ingredientsSplit):
+def cleanStr(ingredientsSplit):
 	for i in range(0, len(ingredientsSplit)):
 		ingredientsSplit[i] = re.sub(r'\([^)]*\)', '', ingredientsSplit[i]).split(",")[0]
 		for fraction in fractionsDict:
@@ -53,7 +53,7 @@ def parseRecipes(recipesJson):
 		recipes.append(recipe)
 	parsed = []
 	for recipe in tqdm(recipes, desc = "Loading recipes"):
-		parsed.append({"name" : recipe["name"], "ingredients" : replaceFractions(recipe["ingredients"].split("\n"))})
+		parsed.append({"name" : recipe["name"], "ingredients" : cleanStr(recipe["ingredients"].split("\n"))})
 	return parsed
 
 def main():
@@ -76,6 +76,7 @@ def main():
 	for recipe in tqdm(recipesDict,desc="Generating JSON files"):
 		recipeNums = []
 		recipeUnits = []
+		recipeContent = []
 		for ingredient in recipe["ingredients"]:
 			
 
@@ -87,7 +88,7 @@ def main():
 			except:
 				pass
 				#print("Hmmm")
-				#print(ingredient)
+				print(ingredient)
 				# We need to manually parse the text
 			if len(quants) > 0:
 				try:
@@ -95,10 +96,12 @@ def main():
 					if quants[0].unit.name == "dimensionless":
 						# We need to manually parse for the object unit (perhaps standardized)
 						numStr = str(quants[0].value)
-						recipeUnits.append(ingredient[ingredient.find(numStr) + len(numStr):])
+						recipeContent.append(ingredient[ingredient.find(numStr) + len(numStr):])
+						recipeContent.append("")
 					else:
 						unitStr = str(quants[0].unit.name)
-						recipeUnits.append(str(ingredient[ingredient.find(unitStr) + len(unitStr):]))
+						recipeContent.append(str(ingredient[ingredient.find(unitStr) + len(unitStr):]))
+						recipeUnits.append(quants[0].unit.name)
 					#print(quants[0].__dict__)
 					#print(quants[0])
 					#print(quants[0].unit.name + str(quants[0].value))
@@ -108,8 +111,9 @@ def main():
 		print(recipe["name"])
 		print(recipeNums)
 		print(recipeUnits)
+		print(recipeContent)
 		print("______________________")
-		outJSON["recipes"].append({"name": recipe["name"], "quantities" : recipeNums, "units" : recipeUnits})
+		outJSON["recipes"].append({"name": recipe["name"], "quantities" : recipeNums, "units" : recipeUnits, "content" : recipeContent})
 
 	with open("recipes.txt", "w") as outfile:  
 		json.dump(data, outfile)
