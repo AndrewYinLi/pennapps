@@ -1,4 +1,5 @@
 import json
+from quantulum import parser # Someone else's fork because main branch is broken: https://github.com/sohrabtowfighi/quantulum
 
 fractionsDict = {'¼': '1/4',
   '½': '1/2',
@@ -39,7 +40,19 @@ def parseRecipes(recipeJson):
 	return parsed
 
 def main():
-	print(parseRecipes("recipes.json"))
+	recipesList = parseRecipes("recipes.json")
+	allIngredients = []
+	for ingList in recipesList:
+		allIngredients.extend(ingList)
+
+	#print(allIngredients)
+	for ingredient in allIngredients:
+		try:
+			quants = parser.parse(ingredient)
+			print(quants)
+			#print(quants.__dict__)
+		except:
+			print(ingredient + " does not work lmao")
 
 if  __name__ =='__main__':
 	main()
