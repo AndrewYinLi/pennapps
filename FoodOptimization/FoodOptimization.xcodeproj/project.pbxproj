@@ -17,6 +17,7 @@
 		4E663FF62143FB72003C002F /* FoodOptimizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E663FF52143FB72003C002F /* FoodOptimizationUITests.swift */; };
 		AE5D51EB2144314F0094E098 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D51EA2144314F0094E098 /* MainPageViewController.swift */; };
 		AE5D51ED21443E010094E098 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D51EC21443E010094E098 /* SecondView.swift */; };
+		AE5D51EF2144696D0094E098 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D51EE2144696D0094E098 /* ThirdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4E663FF72143FB72003C002F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5D51EA2144314F0094E098 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		AE5D51EC21443E010094E098 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		AE5D51EE2144696D0094E098 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				4E663FD62143FB71003C002F /* Main.storyboard */,
 				4E663FD42143FB71003C002F /* ViewController.swift */,
 				AE5D51EC21443E010094E098 /* SecondView.swift */,
+				AE5D51EE2144696D0094E098 /* ThirdView.swift */,
 				AE5D51EA2144314F0094E098 /* MainPageViewController.swift */,
 				4E663FDC2143FB72003C002F /* Assets.xcassets */,
 				4E663FDE2143FB72003C002F /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 				AE5D51ED21443E010094E098 /* SecondView.swift in Sources */,
 				4E663FD52143FB71003C002F /* ViewController.swift in Sources */,
 				4E663FD32143FB71003C002F /* AppDelegate.swift in Sources */,
+				AE5D51EF2144696D0094E098 /* ThirdView.swift in Sources */,
 				4E663FDB2143FB71003C002F /* FoodOptimization.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
