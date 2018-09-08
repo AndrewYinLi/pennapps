@@ -73,9 +73,8 @@ def main():
 
 
 	#print(allIngredients)
-	for recipe in recipesDict:
-		recipeIngs = []
-		recipeQuants = []
+	for recipe in tqdm(recipesDict,desc="Generating JSON files"):
+		recipeNums = []
 		recipeUnits = []
 		for ingredient in recipe["ingredients"]:
 			
@@ -83,31 +82,34 @@ def main():
 			# if assd[0].find(",") != -1:
 			# 	print(assd[0])
 			# 	print(type(assd[0]))
-			#print(ingredient)
 			try:
 				quants = parser.parse(ingredient) # Get rid of extraneous instructions
 			except:
-				print("WOW: ")
+				pass
+				#print("Hmmm")
+				#print(ingredient)
 				# We need to manually parse the text
 			if len(quants) > 0:
 				try:
+					recipeNums.append(quants[0].value)
 					if quants[0].unit.name == "dimensionless":
 						# We need to manually parse for the object unit (perhaps standardized)
-						print(ingredient)
-						print(quants)
-						pass
+						numStr = str(quants[0].value)
+						recipeUnits.append(ingredient[ingredient.find(numStr) + len(numStr):])
 					else:
-						recipeIngs.append(quants[0].unit.name)
-						recipeQuants.append(quants[0].value)
 						unitStr = str(quants[0].unit.name)
 						recipeUnits.append(str(ingredient[ingredient.find(unitStr) + len(unitStr):]))
 					#print(quants[0].__dict__)
-					print(quants[0])
+					#print(quants[0])
 					#print(quants[0].unit.name + str(quants[0].value))
 				except:
 					# We need to manually parse
 					pass
-		outJSON["recipes"].append({"name": recipe["name"], "ingredients": recipeIngs,"quantities" : recipeQuants, "units" : recipeUnits})
+		print(recipe["name"])
+		print(recipeNums)
+		print(recipeUnits)
+		print("______________________")
+		outJSON["recipes"].append({"name": recipe["name"], "quantities" : recipeNums, "units" : recipeUnits})
 
 	with open("recipes.txt", "w") as outfile:  
 		json.dump(data, outfile)
