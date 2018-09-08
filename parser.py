@@ -49,10 +49,23 @@ def main():
 	for ingredient in allIngredients:
 		try:
 			quants = parser.parse(ingredient)
-			print(quants)
-			#print(quants.__dict__)
 		except:
-			print(ingredient + " does not work lmao")
+			# We need to manually parse the text
+			pass
+		if len(quants) > 0:
+			try:
+				quants = parser.parse(ingredient)
+				if quants[0].value == 'dimensionless':
+					# We need to manually parse for the object unit (perhaps standardized)
+					pass
+				else:
+					# Make new JSON object
+					pass
+				print(quants)
+				#print(quants[0].unit.name + str(quants[0].value))
+			except:
+				# We need to manually parse
+				pass
 
 if  __name__ =='__main__':
 	main()
