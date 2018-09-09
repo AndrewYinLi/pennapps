@@ -21,6 +21,7 @@ class SecondView: UIViewController, UITableViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBOutlet var DisplayBar: UINavigationItem!
 
     static var generatedDays = false
