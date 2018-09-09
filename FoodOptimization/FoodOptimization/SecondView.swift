@@ -10,7 +10,9 @@ import UIKit
 
 class SecondView: UIViewController, UITableViewDelegate {
     
-    @IBOutlet var displayName: UILabel!
+    
+    @IBOutlet var DisplayBar: UINavigationItem!
+    
     var myString = String()
     
     @IBOutlet var Day1: UIButton!
@@ -31,8 +33,7 @@ class SecondView: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateDays()
-        
-        displayName.text = myString
+        DisplayBar.title = myString
         // Do any additional setup after loading the view.
     }
 

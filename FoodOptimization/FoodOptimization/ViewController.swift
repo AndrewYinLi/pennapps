@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var secondViewController = segue.destination as! SecondView
+        let secondViewController = segue.destination as! SecondView
         secondViewController.myString = "Hello " + inputName.text!
     }
     

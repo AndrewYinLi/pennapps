@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="By Oberwin 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G3-nt-rFk">
-                                <rect key="frame" x="115" y="428" width="145" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Oberwin 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G3-nt-rFk">
+                                <rect key="frame" x="115" y="427" width="145" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Food Optimization App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gO-4X-fFa">
-                                <rect key="frame" x="99" y="177" width="176" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Optimization App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gO-4X-fFa">
+                                <rect key="frame" x="99" y="176" width="176" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,8 +36,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3gO-4X-fFa" secondAttribute="trailing" constant="100" id="48Z-o0-MuS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3G3-nt-rFk" secondAttribute="trailing" constant="115" id="J1k-yd-k5t"/>
                             <constraint firstItem="3G3-nt-rFk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="L6M-8Y-0kr"/>
-                            <constraint firstItem="3gO-4X-fFa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="122" id="NYm-EQ-Rs2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3G3-nt-rFk" secondAttribute="bottom" constant="269" id="WeS-pt-ApW"/>
+                            <constraint firstItem="3gO-4X-fFa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="156" id="NYm-EQ-Rs2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3G3-nt-rFk" secondAttribute="bottom" constant="219.5" id="WeS-pt-ApW"/>
+                            <constraint firstItem="3G3-nt-rFk" firstAttribute="leading" secondItem="3gO-4X-fFa" secondAttribute="leading" id="jmq-b5-2DK"/>
                             <constraint firstItem="3gO-4X-fFa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="qSk-qC-IQc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
