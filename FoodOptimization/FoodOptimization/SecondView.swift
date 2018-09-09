@@ -10,12 +10,27 @@ import UIKit
 
 class SecondView: UIViewController, UITableViewDelegate {
     
-    @IBOutlet weak var displayName: UILabel!
+    @IBOutlet var displayName: UILabel!
     var myString = String()
+    
+    @IBOutlet var Day1: UIButton!
+    
+    @IBOutlet var Day2: UIButton!
+    
+    @IBOutlet var Day3: UIButton!
+    
+    @IBOutlet var Day4: UIButton!
+    
+    @IBOutlet var Day5: UIButton!
+    
+    @IBOutlet var Day6: UIButton!
+    
+    @IBOutlet var Day7: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateDays()
         
         displayName.text = myString
         // Do any additional setup after loading the view.
@@ -25,5 +40,38 @@ class SecondView: UIViewController, UITableViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
+    
+    func getDayOfWeek(_ today:String) -> Int? {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard let todayDate = formatter.date(from: today) else { return nil }
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: todayDate)
+        return weekDay
+    }
+    
+    func generateDays() -> Void {
+        var DayStrings = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        var DayArray = [UIButton]()
+
+        for item in [Day1, Day2, Day3, Day4, Day5, Day6, Day7] {
+            DayArray.append(item!)
+        }
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from:date)
+        
+        let dayIndex = getDayOfWeek(result)! - 1
+
+        for i in 0...6 {
+            let currentIndex = (i + dayIndex) % 7
+            DayArray[i].setTitle(DayStrings[currentIndex], for: .normal)
+        }
+
+    }
+    
+    
+    
 }

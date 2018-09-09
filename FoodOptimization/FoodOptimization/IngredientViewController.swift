@@ -1,5 +1,5 @@
 //
-//  ThirdView.swift
+//  IngredientViewController.swift
 //  FoodOptimization
 //
 //  Created by Mathewe on 9/8/18.
@@ -8,11 +8,28 @@
 
 import UIKit
 
-class ThirdView: UIViewController {
-
+class IngredientViewController: UIViewController {
+    
+    
+    @IBOutlet var NavBar: UINavigationItem!
+    
+    @IBOutlet var StatusButton: UIBarButtonItem!
+    
+    @IBAction func StatusClicked(_ sender: Any) { //TODO Also implement grid sorting...
+        if StatusButton.title == "Available"{
+            StatusButton.title = "To Buy"
+            NavBar.title = "Ingredients Owned"
+        }
+        else {
+            StatusButton.title = "Available"
+            NavBar.title = "Ingredients to Buy"
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
 
         // Do any additional setup after loading the view.
     }
