@@ -130,17 +130,15 @@ def deleteUnits(ingredient, units):
 	return ingredient
 
 def stemIngredient(ingredient):
+	regex = re.compile('[^a-zA-Z ]')
+	ingredient = regex.sub('', ingredient)
 
-	# regex = re.compile('[^a-zA-Z]')
-	# ingredient = regex.sub('', ingredient)
-
-	# ingredientTokenized = nltk.pos_tag(nltk.tokenize.word_tokenize(ingredient))
-	# newIngredient = "" 
-	# for pair in ingredientTokenized:
-	# 	if pair[1] != 'VB' and pair[1] != 'JJ':
-	# 		newIngredient += pair[0] + " "
-	# newIngredient.rstrip()
-	newIngredient = ingredient
+	ingredientTokenized = nltk.pos_tag(nltk.tokenize.word_tokenize(ingredient))
+	newIngredient = "" 
+	for pair in ingredientTokenized:
+		if pair[1] != 'VB' and pair[1] != 'JJ':
+			newIngredient += pair[0] + " "
+	newIngredient.rstrip()
 	newIngredient = newIngredient.split(" ")
 	newIngredientLen = len(newIngredient)
 	if newIngredientLen == 1:
