@@ -4,6 +4,7 @@ from quantulum import load as l
 from tqdm import tqdm
 import re
 import sys
+import nltk
 
 fractionsDict = {"¼": ".25", " 1/4": ".25",
 				 "½": ".5", " 1/2:": ".5",
@@ -65,15 +66,11 @@ def parseRecipes(recipesJson):
 		recipe = json.loads(line)
 		recipes.append(recipe)
 	parsed = []
-	tossed = 0
 	for recipe in tqdm(recipes, desc="Loading recipes"):
 		#tempYield = 2
 		if "recipeYield" in recipe and "image" in recipe:
 			#tempYield = recipe["recipeYield"]
 			parsed.append({"name": recipe["name"], "yield" : recipe["recipeYield"], "image" : recipe["image"], "ingredients": cleanStr(recipe["ingredients"].split("\n"))})
-		else:
-			tossed+=1
-	print(tossed)
 	return parsed
 
 
@@ -133,13 +130,19 @@ def deleteUnits(ingredient, units):
 	return ingredient
 
 def stemIngredient(ingredient):
-	ingredient = ingredient.split(" ")
-	ingredientLen = len(ingredient)
-	if ingredientLen == 1:
-		ingredient = ingredient[0]
+	ingredientTokenized = nltk.pos_tag(nltk.tokenize.word_tokenize(ingredient))
+	newIngredient = "" 
+	for pair in ingredientTokenized:
+		if pair[1] != 'VB' and pair[1] != 'JJ':
+			newIngredient += pair[1] + " "
+	newIngredient.rstrip()
+	newIngredient = newIngredient.split(" ")
+	newIngredientLen = len(newIngredient)
+	if newIngredientLen == 1:
+		newIngredient = newIngredient[0]
 	else:
-		ingredient = ingredient[ingredientLen-2] + " " + ingredient[ingredientLen-1]
-	return ingredient
+		newIngredient = newIngredient[newIngredientLen-2] + " " + newIngredient[newIngredientLen-1]
+	return newIngredient
 
 def main():
 	completeListIngredients = []
@@ -186,8 +189,9 @@ def main():
 					quantity = res[0]
 					parsedIngredient = ingredient[ingredient.find(str(quantity)) + len(str(quantity)):]
 					parsedIngredient = stemIngredient(parsedIngredient)
-					recipeNumsList.append(quantity)
-					recipeContent.append(parsedIngredient)
+					if not re.match("^[0-9 ]+$", parsedIngredient):
+						recipeNumsList.append(quantity)
+						recipeContent.append(parsedIngredient)
 					continue
 
 			if quants:
@@ -211,22 +215,24 @@ def main():
 								#print("numStr " + numStr)
 								ingredient = ingredient[ingredient.find(numStr) + len(numStr):].lstrip(" ")
 								ingredient = stemIngredient(ingredient)
-
-								if quant.value not in recipeNums:
-									recipeNums.append(quant.value)
-								if ingredient not in recipeContent:
-									recipeContent.append(ingredient)
-								recipeUnits.append("")
+								if not re.match("^[0-9 ]+$", ingredient):
+									if quant.value not in recipeNums:
+										recipeNums.append(quant.value)
+									if ingredient not in recipeContent:
+										recipeContent.append(ingredient)
+									recipeUnits.append("")
 							# Or there isn't any number and we just append the ingredient
 							else:
 								ingredient = stemIngredient(ingredient)
-								if ingredient not in recipeContent:
-									recipeContent.append(ingredient)
-								recipeUnits.append("")
+								if not re.match("^[0-9 ]+$", ingredient):
+									if ingredient not in recipeContent:
+										recipeContent.append(ingredient)
+									recipeUnits.append("")
 						else:
-							if quant.value not in recipeNums:
-								recipeNums.append(quant.value)
-							recipeUnits.append(str(quant.unit.name))
+							if not re.match("^[0-9 ]+$", str(quant.unit.name)):
+								if quant.value not in recipeNums:
+									recipeNums.append(quant.value)
+								recipeUnits.append(str(quant.unit.name))
 
 						# except Exception as e:
 						#     #print(trap)
@@ -236,7 +242,8 @@ def main():
 					if not is_dimensionless:
 						cleanIngredient = deleteUnits(ingredient, recipeUnits)
 						cleanIngredient = stemIngredient(cleanIngredient)
-						recipeContent.append(cleanIngredient)
+						if not re.match("^[0-9 ]+$", cleanIngredient):
+							recipeContent.append(cleanIngredient)
 					recipeUnitsList.append(recipeUnits)
 					recipeNumsList.append(recipeNums)
 				else:
