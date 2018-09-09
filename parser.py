@@ -1,6 +1,5 @@
 import json
-from quantulum import \
-    parser  # Someone else"s fork because main branch is broken: https://github.com/sohrabtowfighi/quantulum
+from quantulum import parser  # Someone else"s fork because main branch is broken: https://github.com/sohrabtowfighi/quantulum
 from quantulum import load as l
 from tqdm import tqdm
 import re
@@ -91,7 +90,7 @@ def deleteUnits(ingredient, units):
                     correct_unit = l.NAMES[temp_unit]
                     break
             if not correct_unit:
-                correct_unit = l.NAMES[unit.split()[0]]
+                correct_unit = l.NAMES["cup"]
 
         # If the unit has symbols (ml, fl oz, etc)
         if correct_unit.symbols:
@@ -184,7 +183,7 @@ def main():
                     recipeUnits = []
 
                     for quant in quants:
-                        # print("NAME " + quant.unit.name)
+                        #print("NAME " + quant.unit.name)
 
                         # If there aren't any units identified
                         if quant.unit.name == "dimensionless":
@@ -199,11 +198,12 @@ def main():
                                     recipeNums.append(quant.value)
                                 if ingredient not in recipeContent:
                                     recipeContent.append(ingredient)
-
+                                recipeUnits.append("")
                             # Or there isn't any number and we just append the ingredient
                             else:
                                 if ingredient not in recipeContent:
                                     recipeContent.append(ingredient)
+                                recipeUnits.append("")
                         else:
                             if quant.value not in recipeNums:
                                 recipeNums.append(quant.value)
@@ -217,9 +217,8 @@ def main():
                     if not is_dimensionless:
                         cleanIngredient = deleteUnits(ingredient, recipeUnits)
                         recipeContent.append(cleanIngredient)
-
-                        recipeNumsList.append(recipeNums)
-                        recipeUnitsList.append(recipeUnits)
+                    recipeUnitsList.append(recipeUnits)
+                    recipeNumsList.append(recipeNums)
                 else:
                     #print("SHOULD WE EVEN BE HERE EMPTY ER: " + ingredient)
                     recipeContent.append(ingredient)
@@ -236,8 +235,8 @@ def main():
     with open("recipes.txt", "w") as outfile:
         json.dump(outJSON, outfile)
 
-    with open("BROLIST.txt", "w") as final_file:
-        final_file.write(str(completeListIngredients))
+    with open("allingredients.txt", "w") as final_file:
+        final_file.write(str(set(completeListIngredients)))
         final_file.close()
 
 
