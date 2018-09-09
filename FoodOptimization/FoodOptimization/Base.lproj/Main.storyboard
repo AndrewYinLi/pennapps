@@ -128,7 +128,6 @@
                                 </state>
                                 <connections>
                                     <action selector="savePrefs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wcE-Fu-vfO"/>
-                                    <segue destination="0KO-tS-Iaa" kind="show" identifier="mainSegue" id="NLr-S8-yxc"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="761-b4-c4b">
@@ -180,6 +179,7 @@
                     </view>
                     <connections>
                         <outlet property="inputName" destination="cdB-PF-Od1" id="6ME-04-tV6"/>
+                        <segue destination="0KO-tS-Iaa" kind="show" identifier="mainSegue" id="LEI-9E-avl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,7 +205,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aRT-ee-870" kind="show" id="Tkl-zq-nuo"/>
+                                    <segue destination="aRT-ee-870" kind="show" id="7Xo-Xl-9P9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLK-Ei-OLO">
@@ -219,7 +219,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="HSg-XV-2RQ"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="anv-Yb-s0C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-oE-b8H">
@@ -228,7 +228,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 2"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="ety-Lf-paM"/>
+                                    <action selector="Day2Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="mwz-R1-J3g"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="ety-Lf-paM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tJ-vR-xDS">
@@ -237,7 +238,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 3"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="oKp-Lq-Wnq"/>
+                                    <action selector="Day3Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="tiE-KC-Fob"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="oKp-Lq-Wnq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmA-iR-EjK">
@@ -246,7 +248,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 4"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="rrH-iz-haV"/>
+                                    <action selector="Day4Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="vns-kI-1Tb"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="rrH-iz-haV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCX-m9-1l2">
@@ -255,7 +258,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 5"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="H4v-dE-GzU"/>
+                                    <action selector="Day5Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="CZI-AB-1Ze"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="H4v-dE-GzU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdG-Zo-sMU">
@@ -264,7 +268,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 6"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="XJo-97-QM2"/>
+                                    <action selector="Day6Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="4UO-Hj-Rtk"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="XJo-97-QM2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-9J-2tw">
@@ -273,7 +278,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 7"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="XSF-Yx-DHM"/>
+                                    <action selector="Day7Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="OjP-G9-CNP"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="XSF-Yx-DHM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvv-HV-cYm">
@@ -282,7 +288,8 @@
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Day 1"/>
                                 <connections>
-                                    <segue destination="BCb-xf-EZ8" kind="show" id="A66-Tj-iOj"/>
+                                    <action selector="Day1Clicked:" destination="0KO-tS-Iaa" eventType="touchUpInside" id="D4Q-8f-baV"/>
+                                    <segue destination="BCb-xf-EZ8" kind="show" identifier="" id="A66-Tj-iOj"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kR-Pq-iCX">
@@ -292,7 +299,7 @@
                                     <navigationItem title="YourName" id="bjy-93-c0p">
                                         <barButtonItem key="rightBarButtonItem" title="Recipes" id="07Z-tn-LVf">
                                             <connections>
-                                                <segue destination="snd-cE-20F" kind="show" id="n5C-ym-ggk"/>
+                                                <segue destination="snd-cE-20F" kind="show" id="hFk-XU-nUH"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -632,6 +639,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xGk-q3-Lde"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bKm-Rp-qTz"/>
                     <connections>
                         <outlet property="BStepper" destination="ZGw-ge-Wfd" id="Zuj-oS-lIs"/>
                         <outlet property="BSwitch" destination="jAS-Mq-bv9" id="6Nt-3X-Efg"/>
@@ -642,6 +650,7 @@
                         <outlet property="LStepper" destination="ty0-zO-Ak0" id="6Kw-l0-u3z"/>
                         <outlet property="LSwitch" destination="VsV-hc-nfk" id="lp2-dR-XWe"/>
                         <outlet property="LunchNum" destination="P3S-nb-LQn" id="aSR-S2-OS1"/>
+                        <outlet property="MealNavBar" destination="HAQ-3M-KVQ" id="lH4-25-fg9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pax-NO-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -650,7 +659,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XSF-Yx-DHM"/>
-        <segue reference="kPy-ow-8D2"/>
+        <segue reference="rrH-iz-haV"/>
+        <segue reference="LEI-9E-avl"/>
     </inferredMetricsTieBreakers>
 </document>

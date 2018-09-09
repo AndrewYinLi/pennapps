@@ -20,10 +20,17 @@ class ThirdView: UIViewController {
         BStepper.maximumValue = 0
         LStepper.minimumValue = 0
         LStepper.maximumValue = 0
+        MealNavBar.title = titleString
+        
+
         // Do any additional setup after loading the view.
     }
+    
 
-
+    @IBOutlet var MealNavBar: UINavigationItem!
+    
+    var titleString = "Meal Settings For " + SecondView.lastClicked
+    
     static var BNum = 0
     
     static var LNum = 0

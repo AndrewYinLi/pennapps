@@ -27,7 +27,6 @@ class IngredientViewController: UIViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

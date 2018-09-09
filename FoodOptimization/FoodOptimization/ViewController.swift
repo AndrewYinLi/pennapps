@@ -11,9 +11,11 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var inputName: UITextField!
+    static var userName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputName.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,26 +23,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        return
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondViewController = segue.destination as! SecondView
-        secondViewController.myString = "Hello " + inputName.text!
-    }
     
     @IBAction func savePrefs(_ sender: Any) {
-        if inputName.text! != ""
-        {
-            performSegue(withIdentifier: "mainSegue", sender: self)
+        if inputName.text! != "" {
+            ViewController.userName = inputName.text!
+        } else {
+            ViewController.userName = "Stranger"
         }
+        self.performSegue(withIdentifier: "mainSegue", sender: self)
     }
     
     
