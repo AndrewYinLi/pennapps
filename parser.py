@@ -157,12 +157,12 @@ def main():
 				# 		print("BROOOOOOOOOO")
 				# 		sys.exit()
 			except:
-				print("FUCK BITCH PUSSY ")
 				numStr = str(ingredient.split(" ")[0])
 				ingredient = ingredient[ingredient.find(numStr) + len(numStr):].lstrip(" ")
 				recipeContent.append(ingredient)
 				recipeContent.append("")
 
+			print(str(len(quants)))
 			if len(quants) > 0:
 
 				# Lists to add to recipeNumsList and recipeUnitsList in case we have more than 2 nums/units
@@ -179,7 +179,7 @@ def main():
 						if quant.unit.name == "dimensionless":
 							# We need to manually parse for the object unit (perhaps standardized)
 							numStr = str(quant.value)
-							print("MOTHERFFUCKER " + numStr)
+							print("numStr " + numStr)
 							ingredient = ingredient[ingredient.find(numStr) + len(numStr):].lstrip(" ")
 							if ingredient not in recipeContent:
 								recipeContent.append(ingredient)
@@ -206,7 +206,7 @@ def main():
 				recipeNumsList.append(recipeNums)
 				recipeUnitsList.append(recipeUnits)
 			else:
-				print("EMPTY LIEK MY BANK ACC")
+				print("EMPTY ER: " + ingredient)
 
 		print(recipe["name"])
 		print(recipeNumsList)
@@ -237,7 +237,7 @@ if  __name__ =="__main__":
 	# 		try:
 	# 			for quant in quants:
 	# 				if quant.unit.name == "dimensionless":
-	# 					print("DIMENSIONLESS BITCH!")
+	# 					print("DIMENSIONLESS")
 	# 				else:
 	# 					unitList.append(str(quant.unit.name))
 
