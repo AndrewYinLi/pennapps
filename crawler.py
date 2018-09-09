@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+from tqdm import tqdm
 
 outJSON = {}
 outJSON["ingredients"] = []
@@ -19,72 +20,78 @@ class Result:
 def get_results(query):
     link = "https://shop.thefreshgrocer.com/store/e7e1123699/search?query=" + query
     response = requests.get(link)
-    soup = BeautifulSoup(response.text)
+    text = response.text
 
-    # Get products
-    products = soup.find_all("div", attrs={"class": ["product", "productBox"]})
+    if "noSearchResults" in text:
+        return []
+    else:
+        soup = BeautifulSoup(text)
 
-    results = []
+        # Get products
+        products = soup.find_all("div", attrs={"class": ["product", "productBox"]})
 
-    for product in products:
-        id = product["id"]
-        quant = product.find("span", attrs={"class": "sizeInfo__currentValue"})
-        img = product.find("img", attrs={"class": "product__image"})
-        result = Result(id, quant, img)
+        if products:
+            results = []
 
-        results.append(result)
+            for product in products:
+                id = product["id"]
+                quant = product.find("span", attrs={"class": "sizeInfo__currentValue"})
+                img = product.find("img", attrs={"class": "product__image"})
+                result = Result(id, quant, img)
 
-    # Get quantities
-    # quantities = soup.find_all("span", attrs={"class": "sizeInfo__currentValue"})
-    quantities = []
-    for res in results:
-        quantities.append(res.quantity)
+                results.append(result)
 
-    values = [tag.text for tag in quantities]
+            # Get quantities
+            # quantities = soup.find_all("span", attrs={"class": "sizeInfo__currentValue"})
+            quantities = []
+            for res in results:
+                quantities.append(res.quantity)
 
-    # Get images
-    #images = soup.find_all("img", attrs={"class": "product__image"})
+            values = [tag.text for tag in quantities]
 
-    # Build a frequency dictionary and sort it
-    freq_dict = {}
+            # Get images
+            #images = soup.find_all("img", attrs={"class": "product__image"})
 
-    for val in values:
-        if val not in freq_dict:
-            freq_dict[val] = 1
-        else:
-            freq_dict[val] += 1
+            # Build a frequency dictionary and sort it
+            freq_dict = {}
 
-    freq_dict = dict(sorted(freq_dict.items(), key=lambda x: x[1]))
-    print(freq_dict)
-    reverse_quants = list(freq_dict.values())[::-1]
-    freq_quants = reverse_quants[:3]
+            for val in values:
+                if val not in freq_dict:
+                    freq_dict[val] = 1
+                else:
+                    freq_dict[val] += 1
 
-    # Get the three most frequented items based on the frequency
-    print(freq_quants)
-    freq_results = []
-    checked = []
+            freq_dict = dict(sorted(freq_dict.items(), key=lambda x: x[1]))
+            #print(freq_dict)
+            reverse_quants = list(freq_dict.values())[::-1]
+            freq_quants = reverse_quants[:3]
 
-    for res in results:
-        le_quant = res.quantity.text
-        if freq_dict[le_quant] in freq_quants and le_quant not in checked:
-            freq_results.append(res)
-            checked.append(le_quant)
+            # Get the three most frequented items based on the frequency
+            #print(freq_quants)
+            freq_results = []
+            checked = []
 
-    return freq_results
+            for res in results:
+                le_quant = res.quantity.text
+                if freq_dict[le_quant] in freq_quants and le_quant not in checked:
+                    freq_results.append(res)
+                    checked.append(le_quant)
+
+            return freq_results
 
 
 if __name__ == "__main__":
     #le_query = "ommit commit"
     #freqs = get_results(le_query)
 
-    file = open("allingredients.txt")
+    file = open("allingredients_1.txt")
     ingredient_list = file.read().split()
 
-    for le_query in ingredient_list:
+    for le_query in tqdm(ingredient_list, "Searching for ingredients..."):
         freqs = get_results(le_query)
         if freqs:
             for item in freqs:
-                print(item)
+                #print(item)
                 outJSON["ingredients"].append({"query": le_query, "quantity": item.quantity, "image": item.image})
 
     with open("frequent_ingredients.json", "w") as outfile:
