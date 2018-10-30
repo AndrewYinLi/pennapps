@@ -23,6 +23,11 @@
 		AE5D51EF2144696D0094E098 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D51EE2144696D0094E098 /* ThirdView.swift */; };
 		AE5D51FF2144B9750094E098 /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D51FE2144B9750094E098 /* IngredientViewController.swift */; };
 		AE5D52012144D2FA0094E098 /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D52002144D2FA0094E098 /* RecipeTableViewController.swift */; };
+<<<<<<< HEAD
+=======
+		AE5D52032144D7D40094E098 /* IngredientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D52022144D7D40094E098 /* IngredientCollectionViewController.swift */; };
+		AE5D52052145054E0094E098 /* OptimizerFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D52042145054E0094E098 /* OptimizerFunction.swift */; };
+>>>>>>> 4b45f575db9942ba9cf9b4c13474cfa6e3caed45
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		AE5D51EE2144696D0094E098 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		AE5D51FE2144B9750094E098 /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
 		AE5D52002144D2FA0094E098 /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		AE5D52022144D7D40094E098 /* IngredientCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCollectionViewController.swift; sourceTree = "<group>"; };
+		AE5D52042145054E0094E098 /* OptimizerFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizerFunction.swift; sourceTree = "<group>"; };
+>>>>>>> 4b45f575db9942ba9cf9b4c13474cfa6e3caed45
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +125,11 @@
 		4E663FD12143FB71003C002F /* FoodOptimization */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				4E115F9421450FEF00B67016 /* IngCollectionReusableView.swift */,
+=======
+				AE5D52042145054E0094E098 /* OptimizerFunction.swift */,
+>>>>>>> 4b45f575db9942ba9cf9b4c13474cfa6e3caed45
 				4E663FD22143FB71003C002F /* AppDelegate.swift */,
 				4E663FD62143FB71003C002F /* Main.storyboard */,
 				4E663FD42143FB71003C002F /* ViewController.swift */,
@@ -292,6 +306,11 @@
 				4E663FD52143FB71003C002F /* ViewController.swift in Sources */,
 				4E115F8F2145024C00B67016 /* IngredientCollectionViewCell.swift in Sources */,
 				4E663FD32143FB71003C002F /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
+=======
+				AE5D52032144D7D40094E098 /* IngredientCollectionViewController.swift in Sources */,
+				AE5D52052145054E0094E098 /* OptimizerFunction.swift in Sources */,
+>>>>>>> 4b45f575db9942ba9cf9b4c13474cfa6e3caed45
 				AE5D51EF2144696D0094E098 /* ThirdView.swift in Sources */,
 				4E663FDB2143FB71003C002F /* FoodOptimization.xcdatamodeld in Sources */,
 			);

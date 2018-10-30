@@ -10,18 +10,55 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class IngCollectionViewController: UICollectionViewController {
-
+class IngCollectionViewController: UICollectionViewController,
+    UINavigationControllerDelegate{
     
-    @IBAction func ChangeStatus(_ sender: Any) {
-    }
+//    @IBAction func ChangeStatus(_ sender: Any) {
+//    }
+    var executeOnce = true
+    var cellDimensions = [String:Int]()
+    var cellHeight = 50
+    var cellWidth = 120
+    
+    var collectionContainerView: UICollectionView!
+    var navBar: UINavigationBar = UINavigationBar()
+    
+    
+    // view constants
+    var viewY = CGFloat()
+    var viewX = CGFloat()
+    var viewWidth = CGFloat()
+    var viewHeight = CGFloat()
+    
+    
+    // gaps from view edge
+    let leftGap = CGFloat(20)
+    let rightGap = CGFloat(20)
+    
+    
+    // navbar constants
+    let navBarHeight = CGFloat(64)
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        navBar.backgroundColor = UIColor.green
+        executeOnce = true
+        viewY = view.frame.origin.y
+        viewX = view.frame.origin.x
+        viewWidth = view.frame.width
+        viewHeight = view.frame.height
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureCollectionView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
         // Dispose of any resources that can be recreated.
     }
 
@@ -30,13 +67,12 @@ class IngCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! IngredientCollectionViewCell
         cell.Name.text = "Apples"
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
+    
+    
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

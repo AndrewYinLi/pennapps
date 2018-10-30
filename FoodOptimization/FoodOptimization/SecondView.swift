@@ -13,10 +13,7 @@ class SecondView: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if SecondView.generatedDays == false {
-            generateDays()
-            SecondView.generatedDays = true
-        }
+        generateDays()
         DisplayBar.title = "Hello " + ViewController.userName
         // Do any additional setup after loading the view.
     }
@@ -24,7 +21,6 @@ class SecondView: UIViewController, UITableViewDelegate {
     
     @IBOutlet var DisplayBar: UINavigationItem!
 
-    static var generatedDays = false
     
     @IBOutlet var Day1: UIButton!
     @IBOutlet var Day2: UIButton!
